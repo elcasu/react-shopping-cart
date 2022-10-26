@@ -42,7 +42,8 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.19.6",
-    "axios-mock-adapter": "^1.21.2"
+    "axios-mock-adapter": "^1.21.2",
+    "sass": "^1.55.0"
   },
   "babel": {
     "presets": [
