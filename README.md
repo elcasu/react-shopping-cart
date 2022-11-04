@@ -7,7 +7,7 @@ A very simple shopping cart PoC, intended as a guide to learn React :)
 This is the current file structure we want to follow:
 
 ```
-src
+src/
 |___ __mocks__/
 |    |___ product.js
 |___ services/
