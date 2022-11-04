@@ -1,6 +1,6 @@
 class Cart {
-  constructor() {
-    this.items = []
+  constructor(items) {
+    this.items = items || []
   }
 
   addItem(product) {
@@ -29,6 +29,10 @@ class Cart {
 
   getItem(product) {
     return this.items.find(item => item.id === product.id)
+  }
+
+  static clone(cartInstance) {
+    return new Cart(cartInstance.items)
   }
 }
 

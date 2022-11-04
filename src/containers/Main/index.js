@@ -12,7 +12,7 @@ function App() {
   // TODO: Later, we'll use the Context to share the state.
   // And then, we'll switch to Redux to handle de application state.
   const [products, setProducts] = useState([])
-  const cart = new Cart()
+  const [cart, setCart] = useState(new Cart())
 
   useEffect(() => {
     async function fetchData() {
@@ -21,7 +21,11 @@ function App() {
     fetchData()
   }, [])
 
-  // TODO: pass the products through props for now
+  const handleAddToCart = product => {
+    cart.addItem(product)
+    setCart(Cart.clone(cart))
+  }
+
   return (
     <div className="main">
       <header className="header">
@@ -33,6 +37,7 @@ function App() {
         <ProductList
           products={products}
           cart={cart}
+          onAddToCart={handleAddToCart}
         />
       </section>
     </div>

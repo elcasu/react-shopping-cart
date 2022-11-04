@@ -5,6 +5,7 @@ const ProductList = (props) => {
   const {
     products,
     cart,
+    onAddToCart,
   } = props
 
   return (
@@ -15,6 +16,7 @@ const ProductList = (props) => {
             key={product.id}
             product={product}
             cart={cart}
+            onAddToCart={onAddToCart}
           />
         ))
       }
