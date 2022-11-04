@@ -23,7 +23,7 @@ function App() {
 
   const handleAddToCart = product => {
     cart.addItem(product)
-    setCart(Cart.clone(cart))
+    setCart(cart.clone())
   }
 
   return (

@@ -31,8 +31,8 @@ class Cart {
     return this.items.find(item => item.id === product.id)
   }
 
-  static clone(cartInstance) {
-    return new Cart(cartInstance.items)
+  clone() {
+    return new Cart(this.items)
   }
 }
 

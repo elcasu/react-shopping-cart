@@ -152,4 +152,21 @@ describe('Cart model', () => {
       expect(item).toBeUndefined()
     })
   })
+
+  describe('clone cart', () => {
+    it('clones a cart instance', () => {
+      const cart = new CartModel()
+      cart.addItem(products[0])
+
+      const clonedCart = cart.clone()
+
+      // First we ensure that clonedCart has
+      // the same CONTENT as original cart instance
+      expect(cart).toEqual(clonedCart)
+
+      // And then we check that the references are
+      // different, and hence they are different objects
+      expect(cart === clonedCart).toBeFalsy()
+    })
+  })
 })
