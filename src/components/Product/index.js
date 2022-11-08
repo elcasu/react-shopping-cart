@@ -1,25 +1,16 @@
-import { useState } from 'react'
 import './styles.scss'
 
 const Product = (props) => {
   const {
     product,
     cart,
+    onAddToCart,
   } = props
-  const [cartItem, setCartItem] = useState(cart.getItem(product))
+  const cartItem = cart.getItem(product)
   const badgeText = cartItem ? `${cartItem.quantity} items in cart` : null
 
-  // NOTE: This is a HACK! Basically, we're forcing the component
-  // to re-render. We'll get this fixed later, when we use Context
-  // or Redux to manage the state.
-  // The issue here is that "cart" is an instance of Cart. When we call the
-  // "addItem()" method (even in the parent component), the cart object changes
-  // (i.e. cart.items[i].quantity increments), but the reference to the object
-  // remains the same, so React doesn't know that something changed.
-  const handleCartClick = () => {
-    setCartItem({
-      ...cart.addItem(product)
-    })
+  const handleAddToCart = () => {
+    onAddToCart(product)
   }
 
   return (
@@ -43,7 +34,7 @@ const Product = (props) => {
         <div className="actions mt-5 d-flex justify-content-between">
           <button
             className="add-to-cart btn btn-success btn-lg"
-            onClick={handleCartClick}
+            onClick={handleAddToCart}
           >Add to cart</button>
           <button className="add-to-cart btn btn-outline-primary btn-lg">View details</button>
         </div>
